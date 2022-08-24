@@ -6,16 +6,24 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def new
-    # @product = Product.new
+    @category = Category.new
   end
 
   def create
-    # @product = Product.new(product_params)
+    @category = Category.new(product_params)
 
-    # if @product.save
-    #   redirect_to %i[admin products], notice: 'Product created!'
-    # else
-    #   render :new
-    # end
+    if @category.save
+      redirect_to %i[admin categories], notice: 'Category created!'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def product_params
+    params.require(:category).permit(
+      :name
+    )
   end
 end

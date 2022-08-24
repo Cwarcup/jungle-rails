@@ -4,14 +4,15 @@
     <h1>Admin &raquo; All Categories</h1>
   </header>
 
+    <div class="well">
+    <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-info' %>
+  </div>
+
 
   <div class="panel panel-default products">
 
-<div class="list-group">
+<div class="list-group mt-2">
   <%= render @categories %>
-  <a href="/admin/categories/new" class="list-group-item list-group-item-action w-50 m-auto active">
-    <span>Create a new category </span>
-  </a>
 </div>
 
   </div>
