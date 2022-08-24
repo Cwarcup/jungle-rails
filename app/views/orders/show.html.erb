@@ -2,12 +2,38 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
+    <h3>Customer: <%= @order.email %></h3>
+    <h3>Thank you for your order!</h3>
+  </header>
   </header>
 
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
-  </div>
+    <div class="panel panel-default items">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="2">Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |item| %>
+            <%= render 'order' , product: item[:product], item: item[:item] %>
+              <% end %>
 
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">
+              TOTAL:
+            </th>
+            <th>
+              $<%= @order.total_cents.to_i / 100.00 %>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
 
 </section>
