@@ -1,4 +1,5 @@
 class Admin::DashboardController < ApplicationController
-  def show
-  end
+  include HttpAuthConcern
+
+  def show; end
 end
