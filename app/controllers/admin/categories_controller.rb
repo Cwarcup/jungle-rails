@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   include HttpAuthConcern
 
   def index
-    # @categories = Cate.order(id: :desc).all
+    @categories = Category.order(id: :desc).all
   end
 
   def new
