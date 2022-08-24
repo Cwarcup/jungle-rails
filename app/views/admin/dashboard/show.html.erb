@@ -1,2 +1,20 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<div class="card m-auto mt-5" style="width: 18em;">
+	<h5 class="card-header">Dashboard</h5>
+	<div class="card-body">
+		<ul class="list-group">
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				Number of products:
+				<span class="badge bg-primary rounded-pill">
+					<%= @products %>
+				</span>
+			</li>
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				Number of categories:
+				<span class="badge bg-primary rounded-pill">
+					<%= @categories %>
+				</span>
+			</li>
+		</ul>
+
+	</div>
+</div>
