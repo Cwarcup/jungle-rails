@@ -36,3 +36,12 @@ Get all the endpoints:
 ```bash
 bin/rails routes
 ```
+creating controllers:
+```bash
+bin/rails generate controller <controller_name>
+```
+
+creating new models:
+```bash
+bin/rails generate model <model_name>
+```
