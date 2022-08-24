@@ -9,7 +9,7 @@ class Admin::DashboardController < ApplicationController
   #  desired data
   # Display a count of how many products are in the database
   # Display a count of how many categories are in the database
-  def show
+  def index
     @products = Product.count
     @categories = Category.count
   end
