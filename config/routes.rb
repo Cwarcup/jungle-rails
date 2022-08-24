@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :about, only: [:index]
 
+  namespace :about do
+    root to: 'about#index'
+  end
+
   resource :cart, only: [:show] do
     post   :add_item
     post   :remove_item
