@@ -45,3 +45,5 @@ creating new models:
 ```bash
 bin/rails generate model <model_name>
 ```
+
+this is a test
