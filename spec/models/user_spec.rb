@@ -165,7 +165,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'authenticate_with_credentials' do
+  describe '.authenticate_with_credentials' do
     it 'should pass when valid credentials are passed into User.new()' do
       user = User.new(
         first_name: 'first_name',
@@ -177,6 +177,36 @@ RSpec.describe User, type: :model do
       user.save
 
       user = User.authenticate_with_credentials('test@test.com', '12345678')
+      expect(user).not_to be(nil)
+    end
+
+    it 'should pass when email has spaces before and after' do
+      user = User.new(
+        first_name: 'first_name',
+        last_name: 'last_name',
+        email: 'test@test.com',
+        password: '12345678',
+        password_confirmation: '12345678'
+      )
+      user.save
+
+      # spaces in email here
+      user = User.authenticate_with_credentials('      test@test.com      ', '12345678')
+      expect(user).not_to be(nil)
+    end
+
+    it 'should pass when email has UPPER CASE letters' do
+      user = User.new(
+        first_name: 'first_name',
+        last_name: 'last_name',
+        email: 'test@test.com',
+        password: '12345678',
+        password_confirmation: '12345678'
+      )
+      user.save
+
+      # spaces in email here
+      user = User.authenticate_with_credentials('TEST@TEST.coM', '12345678')
       expect(user).not_to be(nil)
     end
   end
