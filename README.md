@@ -61,3 +61,11 @@ Auto-generated model specs:
 bin/rails g model widget
 ```
 - when you create a new model, `rspec-rails` will automatically generate a spec file for you in `spec/models/widget_spec.rb`
+
+
+## Testing
+
+Run cypress:
+```bash
+bin/rails cypress:open
+```
