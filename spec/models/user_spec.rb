@@ -164,4 +164,20 @@ RSpec.describe User, type: :model do
       expect(user2.errors[:email]).to include('has already been taken')
     end
   end
+
+  describe 'authenticate_with_credentials' do
+    it 'should pass when valid credentials are passed into User.new()' do
+      user = User.new(
+        first_name: 'first_name',
+        last_name: 'last_name',
+        email: 'test@test.com',
+        password: '12345678',
+        password_confirmation: '12345678'
+      )
+      user.save
+
+      user = User.authenticate_with_credentials('test@test.com', '12345678')
+      expect(user).not_to be(nil)
+    end
+  end
 end
