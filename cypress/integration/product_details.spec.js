@@ -1,4 +1,4 @@
-describe("Homepage", () => {
+describe("Product Details", () => {
 	beforeEach(() => {
 		cy.visit("/");
 	});
