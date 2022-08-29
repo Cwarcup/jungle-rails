@@ -45,6 +45,19 @@ creating new models:
 ```bash
 bin/rails generate model <model_name>
 ```
+---
+
+**Testing Commands**
+
+Run all tests:
+```bash
+bin/rspec
+```
+- this will run all the tests in the `spec` folder.
 
 
-another test
+Auto-generated model specs:
+```bash
+bin/rails g model widget
+```
+- when you create a new model, `rspec-rails` will automatically generate a spec file for you in `spec/models/widget_spec.rb`
