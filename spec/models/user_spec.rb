@@ -118,27 +118,50 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
 
-    it 'email should be unique' do
-      @user = User.new(
-        first_name: 'fname',
-        last_name: 'lName',
-        email: 'test@test.com',
-        password: '12345678',
-        password_confirmation: '12345678'
-      )
+    it 'email must be unique' do
+      user = User.new
+      user.first_name = 'first_name'
+      user.last_name = 'last_name'
+      user.email = 'test@test.com'
+      user.password = 'password'
+      user.password_confirmation = 'password'
 
-      @user.save
+      user.save
 
-      @user2 = User.new(
-        first_name: 'fname2',
-        last_name: 'lName2',
-        email: 'test@test.COM',
-        password: '12345678',
-        password_confirmation: '12345678'
-      )
-      @user2.save
+      user2 = User.new
+      user2.first_name = 'first_name'
+      user2.last_name = 'last_name'
+      user2.email = 'test@test.com'
+      user2.password = 'password'
+      user2.password_confirmation = 'password'
+      user2.save
 
-      expect(@user.errors[:email]).to include('has already been taken')
+      # raise user2.errors[:email].inspect
+
+      expect(user2.errors[:email]).to include('has already been taken')
+    end
+
+    it 'email must be unique, regardless of case' do
+      user = User.new
+      user.first_name = 'first_name'
+      user.last_name = 'last_name'
+      user.email = 'test@test.com'
+      user.password = 'password'
+      user.password_confirmation = 'password'
+
+      user.save
+
+      user2 = User.new
+      user2.first_name = 'first_name'
+      user2.last_name = 'last_name'
+      user2.email = 'TEST@TEST.com'
+      user2.password = 'password'
+      user2.password_confirmation = 'password'
+      user2.save
+
+      # raise user2.errors[:email].inspect
+
+      expect(user2.errors[:email]).to include('has already been taken')
     end
   end
 end
