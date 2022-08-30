@@ -2,8 +2,8 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
-    <h3>Customer: <%= @order.email %></h3>
-    <h3>Thank you for your order!</h3>
+    <h3>Customer: <%= @user.email %></h3>
+    <h3>Thank you for your order, <%= @user.first_name %> <%= @user.last_name %>!</h3>
   </header>
   </header>
 

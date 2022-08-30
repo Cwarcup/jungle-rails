@@ -2,6 +2,9 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
 
+    # find the logged in user
+    @user = User.find_by(id: session[:user_id])
+
     @products = []
     @order.line_items.each do |item|
       product_data = {
